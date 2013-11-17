@@ -42,15 +42,12 @@ window.onload = function() {
 
 	//ゲーム開始時の処理
 	game.onload = function(){
-		
 		var createMainScene = function(){
 				var mainScene = new Scene();
-            	
 				mainScene.addEventListener(Event.TOUCH_START, function(e) { 		
             		console.log("Making a Fish!");
             		makeFish(this,e.localX,e.localY);
 				});
-				
 				return mainScene;
 			};
 		
@@ -65,13 +62,10 @@ window.onload = function() {
 				titleLabel.moveTo((game.width - titleLabel._boundWidth)/2,(game.height - titleLabel._boundHeight)/2);
 				titleLabel.color = "white";
 				titleScene.addChild(titleLabel);
-
-				console.log("Tittle screen created");
 				
 				// シーンにタッチイベントを設定
 				titleScene.addEventListener(Event.TOUCH_START, function(e) { 		
             		//現在表示しているシーンをゲームシーンに置き換えます
-            		console.log("change scene");
 					game.replaceScene(createMainScene());
 				});
 				return titleScene;
@@ -90,9 +84,9 @@ function makeFish (scene,t_x,t_y) {
 	fish.x = t_x;
 	fish.y = t_y;
 	scene.addChild(fish);
+	//fish.x = randfloat(0, SCREEN_WIDTH - FISH_WIDTH)|0;
+	//fish.y = randfloat(0, SCREEN_HEIGHT - FISH_HEIGHT)|0;
 	
-		//fish.x = randfloat(0, SCREEN_WIDTH - FISH_WIDTH)|0;
-		//fish.y = randfloat(0, SCREEN_HEIGHT - FISH_HEIGHT)|0;
 	/*
 	$(window).click(function(e) {
 		console.log('touch');
@@ -105,6 +99,7 @@ function makeFish (scene,t_x,t_y) {
 	scene.addChild(fish);
 	});
 	*/
+	
 };
 
 
