@@ -1,0 +1,35 @@
+body {
+	overflow: hidden;
+	width: 100%;
+	height: 100%;
+}
+#background {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	top: 0;
+	z-index: -100;
+}
+.space {
+	width: 100%;
+	margin: 0px;
+	height: 50px;
+}
+#space_1 {	  	
+	background: url(../img/bg/bgtop.gif) repeat-x blue;
+	background-size:contain;
+	height: 20%;
+}
+#space_2 {
+	background-color: #008acc;
+	height: 40%;
+}
+#space_3 {
+	background: url(../img/bg/bg1.gif) repeat-x blue;
+	background-size:contain;
+	height: 20%;
+}
+#space_4 {
+	background: #cdaa72;
+	height: 30%;
+}

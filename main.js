@@ -3,91 +3,29 @@ enchant();
 /*定数*/
 
 //パラメータ
-
 var SCREEN_WIDTH;
 var SCREEN_HEIGHT;
 
-
-
 /*グローバル変数*/
-
 var game = null;
-
 
 //魚　後々種類変更できるようにする
 var fish;
 var FISH_WIDTH = 34;
 var FISH_HEIGHT = 34;
 
-//背景
-
-function bgdraw (img1,img2) {
-	var canvas1 = document.getElementById('mycanvas1');
-	    if (!canvas1 || !canvas1.getContext) return false;
-    	var ctx1 = canvas1.getContext('2d');
-	var canvas2 = document.getElementById('mycanvas2');
-	    if (!canvas2 || !canvas2.getContext) return false;
-    	var ctx2 = canvas2.getContext('2d');
-    var canvas3 = document.getElementById('mycanvas3');
-	    if (!canvas3 || !canvas3.getContext) return false;
-    	var ctx3 = canvas3.getContext('2d');
-    var canvas4 = document.getElementById('mycanvas4');
-	    if (!canvas4 || !canvas4.getContext) return false;
-    	var ctx4 = canvas4.getContext('2d');
-
-    img1.onload = function() {
-    	//キャンバスのサイズを画面に合わせる
-    	$("#mycanvas1").attr({height:img1.height});
-		$("#mycanvas1").attr({width:SCREEN_WIDTH});
-        var pattern = ctx1.createPattern(img1, 'repeat-x');
-        ctx1.fillStyle = pattern;
-        //左から20上から20の位置に幅50高さ50の輪郭の四角形を作成する
-        ctx1.fillRect(0, 0,SCREEN_WIDTH,img1.height);
-    }
-
-    img2.onload = function() {
-    	//キャンバスのサイズを画面に合わせる
-		$("#mycanvas2").attr({height:img2.height});
-		$("#mycanvas2").attr({width:SCREEN_WIDTH});
-    	var pattern = ctx2.createPattern(img2, 'repeat-x');
-    	ctx2.fillStyle = pattern;
-    	ctx2.fillRect(0,0,SCREEN_WIDTH,img2.height);
-
-    	$("#mycanvas4").attr({height:(SCREEN_HEIGHT-img1.height-img2.height)/2});
-		$("#mycanvas4").attr({width:SCREEN_WIDTH});
-        ctx4.fillStyle = "#cdaa72";
-    	//左から20上から20の位置に幅50高さ50の輪郭の四角形を作成する
-    	ctx4.fillRect(0,0,SCREEN_WIDTH,mycanvas4.height);
-
-    	$("#mycanvas3").attr({height:SCREEN_HEIGHT-img1.height-img2.height-mycanvas4.height});
-		$("#mycanvas3").attr({width:SCREEN_WIDTH});
-        ctx3.fillStyle = "#008acc";
-    	//左から20上から20の位置に幅50高さ50の輪郭の四角形を作成する
-    	ctx3.fillRect(0,0,SCREEN_WIDTH,mycanvas3.height);
-
-    }
-
-
-}
-
-
 //ステージ
 function sizing(){
 	SCREEN_WIDTH = $(document).width();
 	SCREEN_HEIGHT = $(document).height();
-	$("body").css("margin",0);
-
 }
-
-
 
 /*汎用処理*/
 
 //ランダム値生成
-
 var randfloat = function(min,max){
 	return Math.random()*(max-min)+min;
-}
+};
 
 /*メイン処理*/
 window.onload = function() {
@@ -97,73 +35,65 @@ window.onload = function() {
 
 	//ゲームオブジェクトの生成
 	game = new Game(SCREEN_WIDTH,SCREEN_HEIGHT);
-
 	game.fps = 5;
 
 	//画像の読み込み
-	game.preload("img/chara.png","img/bg/bgtop.gif","img/bg/bgunder.gif","img/bg/bg1.gif");
+	game.preload("./img/chara.png");
 
 	//ゲーム開始時の処理
 	game.onload = function(){
-
-
-		var bgimg1 = new Image();
-		var bgimg2 = new Image();
-
-
-		titleScene = game.rootScene;
-
+		
+		var createMainScene = function(){
+				var mainScene = new Scene();
+            	
+				mainScene.addEventListener(Event.TOUCH_START, function(e) { 		
+            		console.log("Making a Fish!");
+            		makeFish(this,e.localX,e.localY);
+				});
+				
+				return mainScene;
+			};
+		
+		//titleScene = game.rootScene;
 			//タイトルシーン
-			var createtitleScene = function(){
-
-				//背景
-				bgimg1.src = 'img/bg/bgtop.gif';
-				bgimg2.src = 'img/bg/bgunder.gif';
-				bgdraw(bgimg1,bgimg2);
-
-				var scene = new Scene();
+			var createTitleScene = function(){
+				var titleScene = new Scene();
 
 				/*タイトルの設定*/
-				var titleLabel = new Label("welcome LittLe aquarium");
+				var titleLabel = new Label("welcome to LittLe aquarium");
 				titleLabel.font = "8px 'Monaco'";
 				titleLabel.moveTo((game.width - titleLabel._boundWidth)/2,(game.height - titleLabel._boundHeight)/2);
 				titleLabel.color = "white";
+				titleScene.addChild(titleLabel);
 
-				scene.addChild(titleLabel);
-
+				console.log("Tittle screen created");
+				
 				// シーンにタッチイベントを設定
-				scene.addEventListener(Event.TOUCH_START, function(e) { 		
+				titleScene.addEventListener(Event.TOUCH_START, function(e) { 		
             		//現在表示しているシーンをゲームシーンに置き換えます
-            		game.replaceScene(mainScene());
+            		console.log("change scene");
+					game.replaceScene(createMainScene());
 				});
-				return scene;
-			};
-
-			mainScene = function(){
-				var scene = new Scene();
-				bgimg1.src = 'img/bg/bgtop.gif';
-				bgimg2.src = 'img/bg/bg1.gif';
-				bgdraw(bgimg1,bgimg2);
-
-            	makeFish(this);
-
-				return scene;
-			};
-
-		game.replaceScene(createtitleScene());
-
-	}
+				return titleScene;
+			};			
+		game.pushScene(createTitleScene());
+	};
 	game.start();
 };
 
 
 
 /*魚を出現させる*/
-function makeFish (scene) {
+function makeFish (scene,t_x,t_y) {
 	fish = new Fish();
 	fish.image = game.assets['./img/chara.png'];
+	fish.x = t_x;
+	fish.y = t_y;
+	scene.addChild(fish);
+	
 		//fish.x = randfloat(0, SCREEN_WIDTH - FISH_WIDTH)|0;
 		//fish.y = randfloat(0, SCREEN_HEIGHT - FISH_HEIGHT)|0;
+	/*
 	$(window).click(function(e) {
 		console.log('touch');
 		//makeFish(scene);
@@ -174,6 +104,7 @@ function makeFish (scene) {
 
 	scene.addChild(fish);
 	});
+	*/
 };
 
 
@@ -242,7 +173,7 @@ var Fish = Class.create(Sprite, {
 		var game = Game.instance;
 		// ラベル生成
 		var label = createLabel("wow!!", this.x, this.y, "white");
-		game.rootScene.addChild(label);
+		game.currentScene.addChild(label);
 		// 自身を削除
 		this.parentNode.removeChild(this);
 	}
