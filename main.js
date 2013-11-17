@@ -79,8 +79,8 @@ window.onload = function() {
 				var titleScene = new Scene();
 
 				/*タイトルの設定*/
-				var titleLabel = new Label("welcome to LittLe aquarium");
-				titleLabel.font = "8px 'Monaco'";
+				var titleLabel = new Label("welcome little aquarium");
+				titleLabel.font = "18px 'Monaco'";
 				titleLabel.moveTo((game.width - titleLabel._boundWidth)/2,(game.height - titleLabel._boundHeight)/2);
 				titleLabel.color = "white";
 				titleScene.addChild(titleLabel);
