@@ -3,15 +3,11 @@ enchant();
 /*定数*/
 
 //パラメータ
-
 var SCREEN_WIDTH;
 var SCREEN_HEIGHT;
 
-
-
 /*グローバル変数*/
 var game = null;
-
 
 //魚　後々種類変更できるようにする
 var fish;
@@ -22,7 +18,6 @@ var FISH_HEIGHT = 34;
 function sizing(){
 	SCREEN_WIDTH = $(document).width();
 	SCREEN_HEIGHT = $(document).height();
-	$("body").css("margin",0);
 }
 
 /*汎用処理*/
@@ -30,7 +25,7 @@ function sizing(){
 //ランダム値生成
 var randfloat = function(min,max){
 	return Math.random()*(max-min)+min;
-}
+};
 
 /*メイン処理*/
 window.onload = function() {
@@ -43,14 +38,19 @@ window.onload = function() {
 	game.fps = 5;
 
 	//画像の読み込み
-	game.preload("img/chara.png");
+	game.preload("./img/chara.png");
 
 	//ゲーム開始時の処理
 	game.onload = function(){
 		
 		var createMainScene = function(){
 				var mainScene = new Scene();
-            	//makeFish(this);
+            	
+				mainScene.addEventListener(Event.TOUCH_START, function(e) { 		
+            		console.log("Making a Fish!");
+            		makeFish(this,e.localX,e.localY);
+				});
+				
 				return mainScene;
 			};
 		
@@ -60,17 +60,19 @@ window.onload = function() {
 				var titleScene = new Scene();
 
 				/*タイトルの設定*/
-				var titleLabel = new Label("welcome LittLe aquarium");
+				var titleLabel = new Label("welcome to LittLe aquarium");
 				titleLabel.font = "8px 'Monaco'";
 				titleLabel.moveTo((game.width - titleLabel._boundWidth)/2,(game.height - titleLabel._boundHeight)/2);
 				titleLabel.color = "white";
 				titleScene.addChild(titleLabel);
 
+				console.log("Tittle screen created");
+				
 				// シーンにタッチイベントを設定
 				titleScene.addEventListener(Event.TOUCH_START, function(e) { 		
             		//現在表示しているシーンをゲームシーンに置き換えます
-            		//game.replaceScene(mainScene());
-					game.pushScene(createMainScene());
+            		console.log("change scene");
+					game.replaceScene(createMainScene());
 				});
 				return titleScene;
 			};			
@@ -82,11 +84,16 @@ window.onload = function() {
 
 
 /*魚を出現させる*/
-function makeFish (scene) {
+function makeFish (scene,t_x,t_y) {
 	fish = new Fish();
 	fish.image = game.assets['./img/chara.png'];
+	fish.x = t_x;
+	fish.y = t_y;
+	scene.addChild(fish);
+	
 		//fish.x = randfloat(0, SCREEN_WIDTH - FISH_WIDTH)|0;
 		//fish.y = randfloat(0, SCREEN_HEIGHT - FISH_HEIGHT)|0;
+	/*
 	$(window).click(function(e) {
 		console.log('touch');
 		//makeFish(scene);
@@ -97,6 +104,7 @@ function makeFish (scene) {
 
 	scene.addChild(fish);
 	});
+	*/
 };
 
 
