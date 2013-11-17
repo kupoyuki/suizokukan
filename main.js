@@ -173,7 +173,7 @@ var Fish = Class.create(Sprite, {
 		var game = Game.instance;
 		// ラベル生成
 		var label = createLabel("wow!!", this.x, this.y, "white");
-		game.rootScene.addChild(label);
+		game.currentScene.addChild(label);
 		// 自身を削除
 		this.parentNode.removeChild(this);
 	}
