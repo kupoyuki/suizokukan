@@ -1,3 +1,4 @@
+//Tameshi
 enchant();
 
 /* 定数 */
