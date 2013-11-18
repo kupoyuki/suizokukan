@@ -35,7 +35,7 @@ fish_catalog[0] = new Array(
 		name: "かつお",
 		file: "./img/fish_anime/katuo.png",
 		height: 70,
-		width: 137.5 
+		width: 70 
 	},
 	{
 		name: "こうていぺんぎん",
