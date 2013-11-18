@@ -28,7 +28,7 @@ window.onload = function() {
 
 	//ゲームオブジェクトの生成
 	game = new Game(SCREEN_WIDTH,SCREEN_HEIGHT);
-	game.fps = 10;
+	game.fps = 5;
 
 	//画像の読み込み	
 	for (i=0;i<fish_catalog.length;i++) {

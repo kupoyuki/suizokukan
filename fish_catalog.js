@@ -65,12 +65,6 @@ fish_catalog[1] = new Array(
 		width: 129.5
 	},
 	{
-		name: "くらかけざめ<br>「すみかは深海」",
-		file: "./img/fish_anime/kurakakezame.png",
-		height: 70,
-		width: 70
-	},
-	{
 		name: "まぐろ<br>「とろ〜」",
 		file: "./img/fish_anime/maguro.png",
 		height: 70,
@@ -110,31 +104,37 @@ fish_catalog[1] = new Array(
 
 fish_catalog[2] = new Array(
 	{
-		name: "ひらめ「かれいじゃないよ〜」",
+		name: "くらかけざめ<br>「すみかは深海」",
+		file: "./img/fish_anime/kurakakezame.png",
+		height: 70,
+		width: 70
+	},
+	{
+		name: "ひらめ<br>「かれいじゃないよ〜」",
 		file: "./img/fish_anime/hirame.png",
 		height: 70,
 		width: 70
 	},
 	{
-		name: "あかすじえび「きれい好きだよ！」",
+		name: "あかすじえび<br>「きれい好きだよ！」",
 		file: "./img/fish_anime/akasujiebi.png",
 		height: 70,
 		width: 93.5 
 	},
 	{
-		name: "ちんあなご「割とはやりました」",
+		name: "ちんあなご<br>「割と流行りました」",
 		file: "./img/fish_anime/chinanago.png",
 		height: 70,
 		width: 66
 	},
 	{
-		name: "せみえび「せみっぽいからせみえび」",
+		name: "せみえび<br>「せみっぽいからせみえび」",
 		file: "./img/fish_anime/semiebi.png",
 		height: 70,
 		width: 106.5
 	},
 	{
-		name: "たかあしがに「ほんとはもっと大きい」",
+		name: "たかあしがに<br>「ほんとはもっと大きい」",
 		file: "./img/fish_anime/takaashigani.png",
 		height: 70,
 		width: 70
