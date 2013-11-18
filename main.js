@@ -34,6 +34,7 @@ window.onload = function() {
 	for (i=0;i<fish_catalog.length;i++) {
 		for (j=0;j<fish_catalog[i].length;j++) {
 			game.preload(fish_catalog[i][j]['file']);
+			console.log(fish_catalog[i][j]['file']);
 		}
 	}
 
@@ -58,6 +59,7 @@ window.onload = function() {
 					//Random select Fish
 					SelectedFish = Math.round(randfloat(0,(fish_catalog[fishType].length-1)));
             		//Create fish
+            		console.log(fish_catalog[fishType][SelectedFish]['name']);
             		makeFish(
             			this,
             			fish_catalog[fishType][SelectedFish]['name'],
@@ -101,6 +103,7 @@ window.onload = function() {
 
 /*魚を出現させる*/
 function makeFish (scene,name,t_x,t_y,imageFile,w,h,t,b) {
+		console.log(imageFile);
 	fish = new Fish(w,h,t,b);
 	fish.image = game.assets[imageFile];
 	fish.x = t_x-(w/2);
