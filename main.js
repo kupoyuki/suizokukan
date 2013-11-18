@@ -28,15 +28,16 @@ window.onload = function() {
 
 	//ゲームオブジェクトの生成
 	game = new Game(SCREEN_WIDTH,SCREEN_HEIGHT);
-	game.fps = 5;
+	game.fps = 10;
 
 	//画像の読み込み	
 	for (i=0;i<fish_catalog.length;i++) {
 		for (j=0;j<fish_catalog[i].length;j++) {
 			game.preload(fish_catalog[i][j]['file']);
-			console.log(fish_catalog[i][j]['file']);
 		}
 	}
+	game.preload("./img/logo.png");
+
 
 	//ゲーム開始時の処理
 	game.onload = function(){
@@ -59,7 +60,6 @@ window.onload = function() {
 					//Random select Fish
 					SelectedFish = Math.round(randfloat(0,(fish_catalog[fishType].length-1)));
             		//Create fish
-            		console.log(fish_catalog[fishType][SelectedFish]['name']);
             		makeFish(
             			this,
             			fish_catalog[fishType][SelectedFish]['name'],
@@ -81,9 +81,15 @@ window.onload = function() {
 				var titleScene = new Scene();
 
 				/*タイトルの設定*/
-				var titleLabel = new Label("welcome little aquarium");
-				titleLabel.font = "18px 'Monaco'";
-				titleLabel.moveTo((game.width - titleLabel._boundWidth)/2,(game.height - titleLabel._boundHeight)/2);
+				var title = new Sprite(300,40);
+				title.image = game.assets["./img/logo.png"];
+				title.moveTo(game.width/2-150,　game.height/2-20);
+				titleScene.addChild(title);
+
+				var titleLabel = new Label("画面をタッチすると魚がでます<br>魚はタッチすると消えます<br>あなたの水族館をつくってね!");
+				titleLabel.font = "12px 'Monaco'";
+				titleLabel.textAlign = "center";
+				titleLabel.moveTo(game.width/2-150,　game.height/2+25);
 				titleLabel.color = "white";
 				titleScene.addChild(titleLabel);
 				
@@ -103,7 +109,6 @@ window.onload = function() {
 
 /*魚を出現させる*/
 function makeFish (scene,name,t_x,t_y,imageFile,w,h,t,b) {
-		console.log(imageFile);
 	fish = new Fish(w,h,t,b);
 	fish.image = game.assets[imageFile];
 	fish.x = t_x-(w/2);
@@ -148,7 +153,6 @@ var Fish = Class.create(Sprite, {
 			this.height = FISH_HEIGHT;
 			this.top = 0;
 			this.bottom = SCREEN_HEIGHT;
-			console.log(this.bottom);
 		}
 		
 		var game = Game.instance;
