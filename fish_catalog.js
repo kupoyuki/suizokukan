@@ -55,8 +55,8 @@ fish_catalog[1] = new Array(
 	{
 		name: "てんぐだい<br>「日本にいます」",
 		file: "./img/fish_anime/fish1.png",
-		height: 59,
-		width: 100 
+		height: 69,
+		width: 105 
 	},
 	{
 		name: "うみがめ<br>「研究所あります」",
