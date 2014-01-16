@@ -2,7 +2,7 @@ var fish_catalog = new Array(3);
 
 fish_catalog[0] = new Array(
 	{
-		name: "ばんどういるか<br>「ミクの曲でショーやるよ！！」",
+		name: "ばんどういるか<br>「SJの曲でショーやるよ！！」",
 		file: "./img/fish_anime/bandouiruka.png",
 		height: 70,
 		width: 77.5 
