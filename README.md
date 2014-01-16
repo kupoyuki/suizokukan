@@ -4,7 +4,7 @@ suizokukan
 #水族館app「LittLe aquarium」
 
   [NCF（NEXT COMMUNICATION FORUM2013）](http://www.tokai.nttdocomo.co.jp/ncf/pc/index.html)によって開催された、
-「NEXT COMMUNICATION AWARD 2013」の[webアプリ部門](http://www.tokai.nttdocomo.co.jp/ncf/pc/award/index.html)
+[「NEXT COMMUNICATION AWARD 2013」](http://www.tokai.nttdocomo.co.jp/ncf/pc/award/index.html)のwebアプリ部門
 に応募するためのアプリです。  
 
   テーマ：名古屋港水族館をもっと楽しむためのスマホコンテンツ  
@@ -28,7 +28,7 @@ suizokukan
   
   ---
   
-  企画書
+  [企画書]()
   
   2013/01/11  
   優秀賞もらいました！
