@@ -12,7 +12,7 @@ suizokukan
   
   イメージ：タップすることで魚が出まくるアプリ  
   
-  ![ベルーガ](img/fish_anime/beruga.png)![ベルーガ](img/fish_anime/beruga.png)![ベルーガ](img/fish_anime/beruga.png)
+  ![ベルーガ](img/fish_anime/beruga.png)![クマノミ](img/fish_anime/kumanomi.png)![テングダイ](img/fish_anime/tengudai.png)
   
   ---
   
