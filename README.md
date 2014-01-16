@@ -12,8 +12,7 @@ suizokukan
   
   イメージ：タップすることで魚が出まくるアプリ  
   
-  ![ベルーガ](img/fish_anime/beruga.png)![クマノミ](img/fish_anime/kumanomi.png)![テングダイ](img/fish_anime/tengudai.png)
-  
+
   ---
   
 ###ポイント  
@@ -27,6 +26,8 @@ suizokukan
   ・ドット絵でアニメーションにする  
   ・ゆるい系  
   ・小さい水族館 
+  
+   ![ベルーガ](img/fish_anime/beruga.png)![クマノミ](img/fish_anime/kumanomi.png)
   
   ---
   
