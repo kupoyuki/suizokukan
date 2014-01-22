@@ -14,7 +14,7 @@ fish_catalog[0] = new Array(
 		width: 110.5
 	},
 	{
-		name: "いわし<br>「いらいらしたときはこのアプリ〜」",
+		name: "いわし<br>「いわしショー?もみにきてね」",
 		file: "./img/fish_anime/iwashi.png",
 		height: 70,
 		width: 70
